@@ -34,24 +34,26 @@
           <h2>Hello, Again</h2>
           <p>We are happy to have you back.</p>
         </div>
-        <div class="input-group mb-3">
-          <input type="text" required class="form-control form-control-lg bg-light fs-6" placeholder="User Name">
-        </div>
-        <div class="input-group mb-1">
-          <input type="password" required class="form-control form-control-lg bg-light fs-6" placeholder="Password">
-        </div>
-        <div class="input-group mb-5 d-flex justify-content-between">
-<!--          <div class="form-check">-->
-<!--            <input type="checkbox" class="form-check-input" id="formCheck">-->
-<!--            <label for="formCheck" class="form-check-label text-secondary"><small>Remember Me</small></label>-->
-<!--          </div>-->
-<!--          <div class="forgot">-->
-<!--            <small><a href="#">Forgot Password?</a></small>-->
-<!--          </div>-->
-        </div>
-        <div class="input-group mb-3">
-          <button class="btn btn-lg btn-primary w-100 fs-6" type="submit">Login</button>
-        </div>
+          <form th:action="@{/processClient}" method="post" th:object="${client}">
+            <div class="input-group mb-3">
+              <input type="text" th:field="*{username}" required class="form-control form-control-lg bg-light fs-6" placeholder="User Name">
+            </div>
+            <div class="input-group mb-1">
+              <input type="password" th:field="*{password}" required class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+            </div>
+            <div class="input-group mb-5 d-flex justify-content-between">
+    <!--          <div class="form-check">-->
+    <!--            <input type="checkbox" class="form-check-input" id="formCheck">-->
+    <!--            <label for="formCheck" class="form-check-label text-secondary"><small>Remember Me</small></label>-->
+    <!--          </div>-->
+    <!--          <div class="forgot">-->
+    <!--            <small><a href="#">Forgot Password?</a></small>-->
+    <!--          </div>-->
+            </div>
+            <div class="input-group mb-3">
+              <button class="btn btn-lg btn-primary w-100 fs-6" type="submit">Login</button>
+            </div>
+          </form>
         <div class="input-group mb-3">
           <button class="btn btn-lg btn-light w-100 fs-6"><img th:src="@{images/google.png}" style="width:20px" class="me-2" alt="google icon"><small>Sign In with Google</small></button>
         </div>
