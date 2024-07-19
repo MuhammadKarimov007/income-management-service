@@ -1,7 +1,12 @@
 package com.uzum.academy.incomeManagementService.models;
 
+import jakarta.validation.constraints.NotNull;
+
 public class Client {
+    @NotNull(message = "Username is required")
     private String username;
+
+    @NotNull(message = "Password is required")
     private String password;
 
     public String getUsername() {

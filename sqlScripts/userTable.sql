@@ -6,5 +6,7 @@ CREATE TABLE `user` (
                         `birth_date` date,
                         `gender` VARCHAR(6) CHECK (`gender` IN ('Male', 'Female')),
                         `balance` DECIMAL(15, 2) NOT NULL DEFAULT 0.00,
+                        `user_name` varchar(60) DEFAULT NULL,
+                        `password` varchar(68) NOT NULL,
                         PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;

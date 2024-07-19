@@ -34,21 +34,32 @@
                     <h2>Easy Money Management</h2>
                     <p>Please, sign up to use our services</p>
                 </div>
+
                 <form th:action="@{/processNewUser}" th:object="${newUser}" method="post">
+                    <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="alert alert-danger" role="alert"></div>
+                    <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="alert alert-danger" role="alert"></div>
+                    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger" role="alert"></div>
+                    <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger" role="alert"></div>
+                    <div th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="alert alert-danger" role="alert"></div>
                     <div class="input-group mb-3">
-                        <input type="text" th:field="*{firstName}" required class="form-control form-control-lg bg-light fs-6" placeholder="First Name">
+                        <input type="text" th:field="*{firstName}" class="form-control form-control-lg bg-light fs-6" placeholder="First Name">
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" th:field="*{lastName}" required class="form-control form-control-lg bg-light fs-6" placeholder="Last Name">
+                        <input type="text" th:field="*{lastName}" class="form-control form-control-lg bg-light fs-6" placeholder="Last Name">
                     </div>
                     <div class="input-group mb-3">
-                        <input type="email" th:field="*{email}" required class="form-control form-control-lg bg-light fs-6" placeholder="Email">
+                        <input type="email" th:field="*{email}" class="form-control form-control-lg bg-light fs-6" placeholder="Email">
                     </div>
                     <div class="input-group mb-1">
-                        <input type="password" th:field="*{password}" required class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+                        <input type="password" th:field="*{password}" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+                    </div>
+                    <div class="col-auto">
+                        <span id="passwordHelpInline" class="form-text">
+                          Must be 8-20 characters long. Must include at least one number.
+                        </span>
                     </div>
                     <div class="input-group mb-1">
-                        <input type="password" th:field="*{confirmPassword}" style="margin-bottom: 20px; margin-top: 20px" required class="form-control form-control-lg bg-light fs-6" placeholder="Confirm Password">
+                        <input type="password" th:field="*{confirmPassword}" style="margin-bottom: 20px; margin-top: 20px" class="form-control form-control-lg bg-light fs-6" placeholder="Confirm Password">
                     </div>
                     <div class="input-group mb-3">
                         <button class="btn btn-lg btn-primary w-100 fs-6" type="submit">Sign Up</button>
