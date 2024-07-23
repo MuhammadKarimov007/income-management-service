@@ -1,8 +1,8 @@
-package com.uzum.academy.incomeManagementService.controllers;
+package com.uzum.academy.incomeManagementService.controller;
 
 import com.uzum.academy.incomeManagementService.dao.UserDAOImpl;
-import com.uzum.academy.incomeManagementService.entities.User;
-import com.uzum.academy.incomeManagementService.models.NewUser;
+import com.uzum.academy.incomeManagementService.entity.User;
+import com.uzum.academy.incomeManagementService.model.NewUser;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;

@@ -1,4 +1,4 @@
-package com.uzum.academy.incomeManagementService.models;
+package com.uzum.academy.incomeManagementService.model;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;

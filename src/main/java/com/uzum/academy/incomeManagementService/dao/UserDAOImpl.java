@@ -1,6 +1,6 @@
 package com.uzum.academy.incomeManagementService.dao;
 
-import com.uzum.academy.incomeManagementService.entities.User;
+import com.uzum.academy.incomeManagementService.entity.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
@@ -29,7 +29,9 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public User findByEmail(String email) {
-        TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class);
+        TypedQuery<User> query = entityManager.createQuery(
+                "SELECT u FROM User u WHERE u.email = :email",
+                User.class);
         query.setParameter("email", email);
         return query.getSingleResult();
     }

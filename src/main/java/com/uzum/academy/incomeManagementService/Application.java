@@ -1,7 +1,7 @@
 package com.uzum.academy.incomeManagementService;
 
 import com.uzum.academy.incomeManagementService.dao.UserDAO;
-import com.uzum.academy.incomeManagementService.entities.User;
+import com.uzum.academy.incomeManagementService.entity.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

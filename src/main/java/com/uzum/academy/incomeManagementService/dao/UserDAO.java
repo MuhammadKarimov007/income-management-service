@@ -1,6 +1,6 @@
 package com.uzum.academy.incomeManagementService.dao;
 
-import com.uzum.academy.incomeManagementService.entities.User;
+import com.uzum.academy.incomeManagementService.entity.User;
 
 public interface UserDAO {
     void save(User user);

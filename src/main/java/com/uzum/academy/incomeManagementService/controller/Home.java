@@ -1,4 +1,4 @@
-package com.uzum.academy.incomeManagementService.controllers;
+package com.uzum.academy.incomeManagementService.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

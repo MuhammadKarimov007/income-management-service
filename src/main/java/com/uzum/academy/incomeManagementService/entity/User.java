@@ -1,6 +1,8 @@
-package com.uzum.academy.incomeManagementService.entities;
+package com.uzum.academy.incomeManagementService.entity;
 
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -33,6 +35,13 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Income> incomes;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Income> expenses;
+
 
 
     public User() {
@@ -117,6 +126,22 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Income> getIncomes() {
+        return incomes;
+    }
+
+    public void setIncomes(List<Income> incomes) {
+        this.incomes = incomes;
+    }
+
+    public List<Income> getExpenses() {
+        return expenses;
+    }
+
+    public void setExpenses(List<Income> expenses) {
+        this.expenses = expenses;
     }
 
     @Override
