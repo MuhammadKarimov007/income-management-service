@@ -31,7 +31,6 @@ public class RegisterController {
     ) {
         System.out.println(userModel);
         userDao.save(mapModelToUser(userModel));
-        // todo - customize the default login url to /auth/login
         return "redirect:/auth/login";
     }
 

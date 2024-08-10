@@ -8,12 +8,23 @@
     <h1>This is your main view</h1>
     <p>Everything will appear here</p>
     <a th:href="@{/app/income}">Add an income</a>
+    <a th:href="@{/app/expense}">Add an expense</a>
+
+    <a th:href="@{/app/income/calculate}">Calculate income for a given period</a>
+
     <h2>All incomes</h2>
     <div th:each="income : ${incomeList}">
         <p th:text="${'Income amount: ' + income.getIncomeAmount()}"></p>
         <p th:text="${'Income date: ' + income.getIncomeDate()}"></p>
         <p th:text="${'Income time: ' + income.getIncomeTime()}"></p>
         <p th:text="${'Income note: ' + income.getSpecialNote()}"></p>
+    </div>
+    <h2>All expenses</h2>
+    <div th:each="expense : ${expenseList}">
+        <p th:text="${'Expense amount: ' + expense.getExpenseAmount()}"></p>
+        <p th:text="${'Expense date: ' + expense.getExpenseDate()}"></p>
+        <p th:text="${'Expense time: ' + expense.getExpenseTime()}"></p>
+        <p th:text="${'Expense note: ' + expense.getSpecialNote()}"></p>
     </div>
 </body>
 </html>

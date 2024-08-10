@@ -1,11 +1,10 @@
 package com.uzum.academy.incomeManagementService.controller;
 
 import com.uzum.academy.incomeManagementService.dao.UserDao;
-import com.uzum.academy.incomeManagementService.entity.ExpenseEntity;
 import com.uzum.academy.incomeManagementService.entity.IncomeEntity;
 import com.uzum.academy.incomeManagementService.entity.UserEntity;
-import com.uzum.academy.incomeManagementService.model.NewExpenseModel;
 import com.uzum.academy.incomeManagementService.model.NewIncomeModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,24 +19,39 @@ import java.time.LocalTime;
 import java.util.Date;
 
 @Controller
-@RequestMapping("/app")
-public class MainController {
+@RequestMapping("/app/income")
+public class IncomeController {
     private final UserDao userDao;
 
-    public MainController(UserDao userDao) {
+    @Autowired
+    public IncomeController(UserDao userDao) {
         this.userDao = userDao;
     }
 
-    @GetMapping("/main")
-    public String mainPage(Model model) {
+    @GetMapping
+    public String incomeAddPage(Model model) {
+        model.addAttribute("newIncomeModel", new NewIncomeModel());
+        return "add-income-view";
+    }
+
+    @PostMapping
+    public String processIncome(@ModelAttribute(name = "newIncomeModel") NewIncomeModel incomeModel) {
+        IncomeEntity incomeEntity = createIncomeEntity(incomeModel);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
         UserEntity user = userDao.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User couldn't be found"));
+        user.addIncome(incomeEntity);
+        userDao.save(user);
 
-        model.addAttribute("incomeList", user.getIncomes());
-        model.addAttribute("expenseList", user.getExpenses());
-
-        return "main-view";
+        return "redirect:/app/main";
     }
 
+    private IncomeEntity createIncomeEntity(NewIncomeModel incomeModel) {
+        return new IncomeEntity(
+                incomeModel.getIncomeAmount(),
+                new Date(),
+                LocalTime.now(),
+                incomeModel.getSpecialNote()
+        );
+    }
 }

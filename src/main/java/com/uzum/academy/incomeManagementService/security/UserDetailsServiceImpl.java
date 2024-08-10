@@ -18,7 +18,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         UserEntity user =  userDao.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("Can't find the username"));
+                .orElseThrow(() -> new UsernameNotFoundException("Can't find the email"));
         return new UserDetailsImpl(
                 user.getEmail(),
                 user.getPassword()

@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Represents a model for creating a new income entry.
- * This class contains only the essential details needed to create an income,
+ * Represents a model for creating a new expense entry.
+ * This class contains only the essential details needed to create an expense,
  * such as the amount and a special note.
  *
  * <p>This class uses Lombok annotations to automatically generate
@@ -14,13 +14,13 @@ import lombok.NoArgsConstructor;
  *
  * <p>Example usage:</p>
  * <pre>
- *     NewIncomeModel newIncome = new NewIncomeModel(2000.0, "Freelance project payment");
+ *     NewExpenseModel newExpense = new NewExpenseModel(150.0, "Dinner with friends");
  * </pre>
  */
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class NewIncomeModel {
-    private Double incomeAmount;
+@NoArgsConstructor
+public class NewExpenseModel {
+    private Double expenseAmount;
     private String specialNote;
 }
