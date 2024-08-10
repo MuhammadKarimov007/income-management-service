@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show income period results</title>
+</head>
+<body>
+    <h1>All the incomes for the given period:</h1>
+    <div th:if="${#lists.isEmpty(incomePeriodList)}">
+      <p>Income for the given range couldn't be found.</p>
+    </div>
+    <div th:each="income : ${incomePeriodList}" >
+      <p th:text="${'Income amount: ' + income.getIncomeAmount()}"></p>
+      <p th:text="${'Income date: ' + income.getIncomeDate()}"></p>
+      <p th:text="${'Income time: ' + income.getIncomeTime()}"></p>
+      <p th:text="${'Income note: ' + income.getSpecialNote()}"></p>
+    </div>
+</body>
+</html>

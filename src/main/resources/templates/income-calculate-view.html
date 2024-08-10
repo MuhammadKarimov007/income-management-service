@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate income for a given period</title>
+</head>
+<body>
+  <h1>Calculate income for a given period</h1>
+  <p><i>*Note that the start date is inclusive and the end date is exclusive.</i></p>
+  <form th:action="@{/app/income/calculate}" method="post" th:object="${incomePeriodModel}">
+      <label for="start-date">
+          <input type="date" id="start-date" th:field="*{startDate}">
+      </label>
+      <label for="end-date">
+          <input type="date" id="end-date" th:field="*{endDate}">
+      </label>
+
+      <input type="submit" value="Show incomes">
+  </form>
+</body>
+</html>

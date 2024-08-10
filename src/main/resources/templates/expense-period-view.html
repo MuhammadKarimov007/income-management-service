@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show expense period results</title>
+</head>
+<body>
+<h1>All the expense for the given period:</h1>
+<div th:if="${#lists.isEmpty(expensePeriodList)}">
+    <p>Income for the given range couldn't be found.</p>
+</div>
+<div th:each="income : ${expensePeriodList}" >
+    <p th:text="${'Expense amount: ' + income.getExpenseAmount()}"></p>
+    <p th:text="${'Expense date: ' + income.getExpenseDate()}"></p>
+    <p th:text="${'Expense time: ' + income.getExpenseTime()}"></p>
+    <p th:text="${'Expense note: ' + income.getSpecialNote()}"></p>
+</div>
+</body>
+</html>
