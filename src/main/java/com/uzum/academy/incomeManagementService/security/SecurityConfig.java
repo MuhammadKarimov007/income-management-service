@@ -14,7 +14,12 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests(
                         request -> request
-                                .requestMatchers("/", "/auth/**").permitAll()
+                                .requestMatchers("/",
+                                        "/auth/**",
+                                        "/static/**",
+                                        "https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js",
+                                        "/images/**",
+                                        "/styles/index-style.css").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(form ->form
