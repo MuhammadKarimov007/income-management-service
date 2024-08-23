@@ -4,8 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
+/**
+ * A model class representing a period for income records.
+ * <p>
+ * The {@code IncomePeriodModel} class is used to encapsulate the start and end dates
+ * for an income period. This model is typically used to specify a time range for querying
+ * or filtering income records.
+ * </p>
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
