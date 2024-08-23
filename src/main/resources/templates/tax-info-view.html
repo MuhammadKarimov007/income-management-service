@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result of taxed money and remaining income money</title>
+</head>
+<body>
+<h1>Result of taxed money and remaining income money</h1>
+<div th:each="result : ${taxInfo}">
+  <p th:text="${'Total: ' + result.preTaxMoney}"></p>
+  <p th:text="${'Taxed money: ' + result.taxedMoney}"></p>
+  <p th:text="${'Remaining money: ' + result.remainingMoney}"></p>
+</div>
+</body>
+</html>

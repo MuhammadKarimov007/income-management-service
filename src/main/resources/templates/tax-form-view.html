@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate income tax for a given year</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" th:href="@{/styles/yearpicker.css}">
+    <script th:src="@{/js/yearpicker.js}"></script>
+</head>
+<body>
+    <h1>Calculate income tax for a given year</h1>
+    <form th:action="@{/app/tax}" method="post"  th:object="${taxModel}">
+        <label for="year">
+            <input type="text" id="year" th:field="*{year}" class="yearpicker">
+        </label>
+        <label for="percent">
+            <input type="number" id="percent" th:field="*{percent}">
+        </label>
+        <input type="submit" value="Calculate tax">
+    </form>
+    <script>
+        $(".yearpicker").yearpicker();
+    </script>
+</body>
+</html>
