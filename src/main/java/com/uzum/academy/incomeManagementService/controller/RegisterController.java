@@ -1,8 +1,8 @@
 package com.uzum.academy.incomeManagementService.controller;
 
-import com.uzum.academy.incomeManagementService.dao.UserDao;
-import com.uzum.academy.incomeManagementService.entity.UserEntity;
 import com.uzum.academy.incomeManagementService.model.NewUserModel;
+import com.uzum.academy.incomeManagementService.service.RegistrationService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,13 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/auth")
 public class RegisterController {
-    private final UserDao userDao;
-
-    public RegisterController(UserDao userDao) {
-        this.userDao = userDao;
-    }
+    private final RegistrationService registrationService;
 
     @GetMapping("/register")
     public String register(Model model) {
@@ -29,17 +26,7 @@ public class RegisterController {
     public String processNewUser(
             @ModelAttribute("newUserModel") NewUserModel userModel
     ) {
-        System.out.println(userModel);
-        userDao.save(mapModelToUser(userModel));
+        registrationService.saveNewUser(userModel);
         return "redirect:/auth/login";
-    }
-
-    private UserEntity mapModelToUser(NewUserModel model) {
-        return new UserEntity(
-                model.getFirstName(),
-                model.getLastName(),
-                model.getEmail(),
-                "{noop}"+model.getPassword()
-        );
     }
 }

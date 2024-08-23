@@ -1,6 +1,6 @@
 package com.uzum.academy.incomeManagementService.service;
 
-import com.uzum.academy.incomeManagementService.dao.IncomeDao;
+import com.uzum.academy.incomeManagementService.repository.IncomeRepo;
 import com.uzum.academy.incomeManagementService.entity.IncomeEntity;
 import com.uzum.academy.incomeManagementService.entity.UserEntity;
 import com.uzum.academy.incomeManagementService.model.TaxInfoModel;
@@ -14,7 +14,7 @@ import java.util.*;
 @Service
 @RequiredArgsConstructor
 public class TaxService {
-    private final IncomeDao incomeDao;
+    private final IncomeRepo incomeRepo;
     private final AuthService authService;
 
     public List<TaxInfoModel> generateTaxInfoMap(String year, Double percent) {
@@ -43,7 +43,7 @@ public class TaxService {
         calendar.setTime(year);
         calendar.set(Calendar.MONTH, Calendar.DECEMBER);
         calendar.set(Calendar.DAY_OF_MONTH, 31);
-        return incomeDao.findByUserIdAndIncomeDateBetween(id,
+        return incomeRepo.findByUserIdAndIncomeDateBetween(id,
                 year, calendar.getTime()
         );
     }

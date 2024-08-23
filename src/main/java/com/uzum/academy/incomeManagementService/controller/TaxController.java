@@ -17,9 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/app/tax")
 public class TaxController {
-
     private final TaxService taxService;
-
     @GetMapping
     public String showTaxForm(Model model) {
         model.addAttribute("taxModel", new TaxModel());
@@ -38,5 +36,4 @@ public class TaxController {
         model.addAttribute("taxInfo", taxInfoModel);
         return "tax-info-view";
     }
-
 }
