@@ -1,0 +1,30 @@
+services:
+  postgres:
+    container_name: postgres-prod
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: tracker_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgres/data
+    networks:
+      - spring-boot-network
+  spring-boot-app:
+    container_name: money-management-project
+    image: final-project
+    ports:
+      - "8080:8080"
+    networks:
+      - spring-boot-network
+    depends_on:
+      - postgres
+
+volumes:
+  postgres:
+
+networks:
+  spring-boot-network:
+    driver: bridge
