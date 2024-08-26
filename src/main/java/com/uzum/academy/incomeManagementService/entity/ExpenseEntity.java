@@ -31,7 +31,7 @@ import java.util.Date;
 @Table(name = "expenses")
 public class ExpenseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
