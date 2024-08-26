@@ -8,7 +8,7 @@ sensitive data to actually use the service. So, security in mind, the project us
 2. Download the docker-compose.yml of the application. You can download it [here](https://github.com/MuhammadKarimov007/income-management-service/blob/secureBranch/docker-compose.yml).
 3. Pull the docker image using this command. Note that you need to specify the version of the image. Otherwise, you may get manifest unknown error message.
     ```
-    docker pull shermukhammad843/final-project-uzum:v1.0
+    docker pull shermukhammad843/final-project:v1.0
    ```
 4. Once the pull is complete, run the following command.
     ```
