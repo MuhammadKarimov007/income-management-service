@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate total balance for a given period</title>
+</head>
+<body>
+    <h1>Calculate total balance for a given period</h1>
+    <form th:action="@{/app/balance}" method="post" th:object="${balanceModel}">
+      <label for="start-date">
+        <input type="date" id="start-date" th:field="*{startDate}">
+      </label>
+      <label for="end-date">
+        <input type="date" id="end-date" th:field="*{endDate}">
+      </label>
+      <input type="submit" value="Calculate balance">
+    </form>
+</body>
+</html>
